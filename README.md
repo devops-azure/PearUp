@@ -1,2 +1,4 @@
-# PearUp
-PearUp project hosting Web in AngularJS and Backend Api with Dotnet Core2.0
+# AngularJS as Web(Frontend) with ASP.Net Core2.0 as API(Backend)
+
+This repiository used to store the ASP.NET Core for Linux version with AngularJS in Docker environment
+
