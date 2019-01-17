@@ -33,7 +33,7 @@ node('BuildNode')
     try{
       // Check SonarQube project status
       sh '''#!/bin/bash
-      if [ "$(jq \' .projectStatus | .status \' <<< "$(curl http://10.0.0.222:9000/api/qualitygates/project_status?projectKey=PearUpWeb)")" = "\\"OK\\"" ]; then
+      if [ "$(jq \' .projectStatus | .status \' <<< "$(curl http://ip-10-0-0-183.eu-central-1.compute.internal:8000/api/qualitygates/project_status?projectKey=PearUpWeb)")" = "\\"OK\\"" ]; then
    	     echo "SONAR ANALYSIS IS PASSED"
       else
          echo "SONAR ANALYSIS IS FAILED"
