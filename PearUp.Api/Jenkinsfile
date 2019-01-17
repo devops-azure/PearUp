@@ -1,0 +1,98 @@
+node('BuildNode') {
+   // def mvnHome
+   stage('GitHub Pull') { 
+      // Get some code from a GitHub repository
+      git credentialsId: '3ba6041c-5220-430f-80d9-d6d1a48d2421', url: 'http://ip-10-0-0-145.eu-central-1.compute.internal/TPMS/PearUp.git'
+      //mvnHome = tool 'M3'
+   }
+   stage('Docker Build') {
+      // Build app using Docker image
+      sh '''
+        cd PearUp.Api
+        docker build -t pearupapi .
+        '''
+   }
+   stage('Code Analysis: SonarQube') {
+      sh '''#!/bin/bash
+      #Check SonarQube project status
+      if [ "$(jq \' .projectStatus | .status \' <<< "$(curl http://10.0.0.222:9000/api/qualitygates/project_status?projectKey=PearUpApi)")" = "\\"OK\\"" ]; then
+   	     echo "SONAR ANALYSIS IS PASSED"
+      else
+         echo "SONAR ANALYSIS IS FAILED"
+         exit 1
+      fi;'''
+   }
+   stage('Publish: Nexus Artifactory') {
+      // Publish Docker images to Nexus Docker Registry
+      sh '''
+        #Tag docker image as pearupapi latest, also with version number for rollbacks
+        docker tag pearupapi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:latest
+        docker tag pearupapi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:${BUILD_NUMBER}
+        
+        #Publish docker image to nexus docker registry
+        docker push ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:latest
+        docker push ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:${BUILD_NUMBER}
+        
+        #Delete published docker images from local
+        docker rmi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:latest
+        docker rmi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:${BUILD_NUMBER}
+        '''
+   }
+}
+node('StagingNode') {
+    stage('Deploy: Staging Environment'){
+       echo "Deploy to staging environment!!"
+       sh '''#!/bin/bash
+        #Pull pearupapi docker image from nexus docker registry
+       
+        docker pull  ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:latest
+        
+        #Check if pearupapi service is already present
+        docker service ps pearupapi 2>/dev/null || status=$? && true
+        
+        if [[ ($status -eq 0) ]]; then
+         #Update pearupapi latest service
+         echo "Peaupapi service is already present, updating it!!"
+         docker service update --force pearupapi --image  ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:latest
+        
+        else
+         #Create pearupapi service
+         echo "creating pearupapi service"
+         docker service create --name pearupapi --publish 61167:61167  ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:latest
+        
+        fi'''
+    }
+   stage('Test: Functional & Performance'){
+       echo "Tested it!!"
+   }
+}
+stage('Manual Approval: Prod Deploy'){
+ timeout(time: 2, unit: 'MINUTES') {
+    input "Deploy to prod?"
+ }
+}
+node('ProdNode') {
+    stage('Deploy: Prod Environment'){
+       echo "Deploy to Prod environment!!"
+       sh '''#!/bin/bash
+        #Pull pearupapi docker image from nexus docker registry
+       
+        docker pull  ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:latest
+        
+        #Check if pearupapi service is already present
+        docker service ps pearupapi 2>/dev/null || status=$? && true
+        
+        if [[ ($status -eq 0) ]]; then
+         #Update pearupapi latest service
+         echo "Peaupapi service is already present, updating it!!"
+         docker service update --force pearupapi --image  ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:latest
+        
+        else
+         #Create pearupapi service
+         echo "creating pearupapi service"
+         docker service create --name pearupapi --publish 61167:61167  ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupapi:latest
+        
+        fi'''
+    }
+}       
+
