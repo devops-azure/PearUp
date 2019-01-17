@@ -1,0 +1,16 @@
+2018-06-08 10:27:06,823 -com.ggktech.service.PublicLibrary -INFO - MobileEmulation is started.
+2018-06-08 10:27:26,739 -com.ggktech.utils.MergeXMLs -ERROR - Please enter a valid encryption password to decrypt value.
+2018-06-08 10:27:26,781 -com.ggktech.service.PublicLibrary -ERROR - Exception in setPassword()org.openqa.selenium.WebDriverException: unknown error: keys should be a string
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.37.543627 (63642262d9fb93fb4ab52398be4286d844092a5e),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+Build info: version: '3.8.1', revision: '6e95a6684b', time: '2017-12-01T18:33:54.468Z'
+System info: host: 'GGKU2SYS27', ip: '10.211.1.30', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_51'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, acceptSslCerts: false, applicationCacheEnabled: false, browserConnectionEnabled: false, browserName: chrome, chrome: {chromedriverVersion: 2.37.543627 (63642262d9fb93..., userDataDir: C:\Users\PADMAS~1.PAL\AppDa...}, cssSelectorsEnabled: true, databaseEnabled: false, handlesAlerts: true, hasTouchScreen: true, javascriptEnabled: true, locationContextEnabled: true, mobileEmulationEnabled: true, nativeEvents: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: XP, platformName: XP, rotatable: false, setWindowRect: true, takesHeapSnapshot: true, takesScreenshot: true, unexpectedAlertBehaviour: , unhandledPromptBehavior: , version: 66.0.3359.181, webStorageEnabled: true}
+Session ID: f65bf155a2d7b846b5121ca4b8e7c730
+2018-06-08 10:27:26,785 -com.ggktech.utils.Reporter -INFO - MobileEmulation is failed due to reason : org.openqa.selenium.WebDriverException: unknown error: keys should be a string
+  (Session info: chrome=66.0.3359.181)
+  (Driver info: chromedriver=2.37.543627 (63642262d9fb93fb4ab52398be4286d844092a5e),platform=Windows NT 10.0.16299 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 0 milliseconds
+

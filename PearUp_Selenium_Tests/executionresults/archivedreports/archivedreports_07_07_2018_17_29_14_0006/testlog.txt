@@ -1,0 +1,6 @@
+2018-07-07 17:28:15,585 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is started.
+2018-07-07 17:28:56,399 -com.ggktech.service.PublicLibrary -ERROR - Exception in fluentWait()org.openqa.selenium.TimeoutException: Expected condition failed: waiting for com.ggktech.service.PublicLibrary$1@1070976b (tried for 15 second(s) with 100 MILLISECONDS interval)
+Build info: version: '3.8.1', revision: '6e95a6684b', time: '2017-12-01T18:33:54.468Z'
+System info: host: 'GGKU2SYS27', ip: '10.211.1.30', os.name: 'Windows 8.1', os.arch: 'amd64', os.version: '6.3', java.version: '1.8.0_51'
+Driver info: driver.version: unknown
+2018-07-07 17:28:56,407 -com.ggktech.utils.Reporter -INFO - PU_CreatingInterests is failed due to reason : Element locator 'By.jQuerySelector: a[href='javascript:void(0)']' did not match any elements after 15 seconds.

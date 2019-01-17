@@ -1,0 +1,2 @@
+2018-07-09 12:50:52,567 -com.ggktech.service.PublicLibrary -INFO - PU_FailingInterest is started.
+2018-07-09 12:51:13,125 -com.ggktech.utils.Reporter -INFO - PU_FailingInterest is failed due to reason :  is not present

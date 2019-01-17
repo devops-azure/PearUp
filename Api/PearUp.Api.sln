@@ -1,0 +1,267 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2003
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.Api", "PearUp.Api\PearUp.Api.csproj", "{9DD9A712-1136-485F-BE3B-77064A981318}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{205230B3-4E83-47D0-AC5A-902CB4ED7340}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.ApplicationServices", "PearUp.Business\PearUp.ApplicationServices.csproj", "{B46108FC-DE75-4057-96D5-8DA79A495E1C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.IApplicationServices", "PearUp.IBusiness\PearUp.IApplicationServices.csproj", "{9C7882F0-A4BC-4B08-9563-5EBF6D59DCE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{5879948B-ED84-47C8-A3A4-3A2ECED573FA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.Authentication", "PearUp.Authentication\PearUp.Authentication.csproj", "{08A5E26C-2380-4702-ACB7-4E0AEA995089}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.ServiceConfiguration", "PearUp.ServiceConfiguration\PearUp.ServiceConfiguration.csproj", "{5B6C71FC-10BC-4643-8F8B-4AB3C7063113}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.DomainEntity", "PearUp.BusinessEntity\PearUp.DomainEntity.csproj", "{8492F01D-D4F5-4E8B-BCB5-56901365C4E5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{45B2CD9C-A2BB-45FF-AF01-9EA6D15CCA59}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.CommonEntity", "PearUp.CommonEntity\PearUp.CommonEntity.csproj", "{7383526E-21BC-47E9-A366-67C18EDF2309}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.Repository", "PearUp.Repository\PearUp.Repository.csproj", "{CE9329AA-910D-4551-802A-8188A46F4D84}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.IRepository", "PearUp.IRepository\PearUp.IRepository.csproj", "{58AD3524-9058-4E84-9C7F-27D853A6B73F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.DTO", "PearUp.DTO\PearUp.DTO.csproj", "{17B6C340-2FEE-4FD4-BDEA-46C49264A44D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.Tests", "PearUp.Tests\PearUp.Tests.csproj", "{D993FF0F-40E5-4A0D-9172-3C8155A0F8B2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.Constants", "PearUp.Constants\PearUp.Constants.csproj", "{A7F21AA6-2193-4E27-A312-5EB66ED9E4D1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.MongoRepository", "PearUp.MongoRepository\PearUp.MongoRepository.csproj", "{DE5DA8D9-E78B-4649-9B02-D524D0BA0350}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logger", "Logger", "{79240DE0-B570-45BA-A70E-EC45963C8349}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.LoggingFramework", "PearUp.LoggingFramework\PearUp.LoggingFramework.csproj", "{1332F20C-810E-49F0-8956-DB9B05BDA71F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.ILoggingFramework", "PearUp.ILoggingFramework\PearUp.ILoggingFramework.csproj", "{EF41BF36-6A30-490A-839A-1473485D2EAE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.Factories", "PearUp.Factories\PearUp.Factories.csproj", "{6F606BFC-846E-4C84-849D-0AC926B81860}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{8D988A92-9AEC-405B-93E1-0C1DC1217395}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{41C652EF-AA1A-419C-AB0E-1A1583BFCF4C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{C7D9ABD2-889C-4C82-8396-4541F3686C38}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{03BBDCC9-C993-48D0-9C2D-C27E531F3484}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.DomainServices", "PearUp.DomainServices\PearUp.DomainServices.csproj", "{E96EDF56-311B-4852-89E2-0CDCAA0B6D97}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.IDomainServices", "PearUp.IDomainServices\PearUp.IDomainServices.csproj", "{95C26E78-B76A-44D8-838B-80658AE9FF63}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{075B22DF-9441-4750-9348-C9D8706F2A38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.Infrastructure", "PearUp.Infrastructure\PearUp.Infrastructure.csproj", "{FD90479B-5B97-4FEF-9030-9871D972E545}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PearUp.Azure", "PearUp.Azure\PearUp.Azure.csproj", "{A8009815-7348-4845-B0F8-B508CFB26002}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DD9A712-1136-485F-BE3B-77064A981318}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DD9A712-1136-485F-BE3B-77064A981318}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DD9A712-1136-485F-BE3B-77064A981318}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DD9A712-1136-485F-BE3B-77064A981318}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B46108FC-DE75-4057-96D5-8DA79A495E1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B46108FC-DE75-4057-96D5-8DA79A495E1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B46108FC-DE75-4057-96D5-8DA79A495E1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B46108FC-DE75-4057-96D5-8DA79A495E1C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C7882F0-A4BC-4B08-9563-5EBF6D59DCE0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C7882F0-A4BC-4B08-9563-5EBF6D59DCE0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C7882F0-A4BC-4B08-9563-5EBF6D59DCE0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C7882F0-A4BC-4B08-9563-5EBF6D59DCE0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08A5E26C-2380-4702-ACB7-4E0AEA995089}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08A5E26C-2380-4702-ACB7-4E0AEA995089}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08A5E26C-2380-4702-ACB7-4E0AEA995089}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08A5E26C-2380-4702-ACB7-4E0AEA995089}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B6C71FC-10BC-4643-8F8B-4AB3C7063113}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B6C71FC-10BC-4643-8F8B-4AB3C7063113}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B6C71FC-10BC-4643-8F8B-4AB3C7063113}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B6C71FC-10BC-4643-8F8B-4AB3C7063113}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8492F01D-D4F5-4E8B-BCB5-56901365C4E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8492F01D-D4F5-4E8B-BCB5-56901365C4E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8492F01D-D4F5-4E8B-BCB5-56901365C4E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8492F01D-D4F5-4E8B-BCB5-56901365C4E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7383526E-21BC-47E9-A366-67C18EDF2309}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7383526E-21BC-47E9-A366-67C18EDF2309}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7383526E-21BC-47E9-A366-67C18EDF2309}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7383526E-21BC-47E9-A366-67C18EDF2309}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE9329AA-910D-4551-802A-8188A46F4D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE9329AA-910D-4551-802A-8188A46F4D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE9329AA-910D-4551-802A-8188A46F4D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE9329AA-910D-4551-802A-8188A46F4D84}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58AD3524-9058-4E84-9C7F-27D853A6B73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58AD3524-9058-4E84-9C7F-27D853A6B73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58AD3524-9058-4E84-9C7F-27D853A6B73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58AD3524-9058-4E84-9C7F-27D853A6B73F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17B6C340-2FEE-4FD4-BDEA-46C49264A44D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17B6C340-2FEE-4FD4-BDEA-46C49264A44D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17B6C340-2FEE-4FD4-BDEA-46C49264A44D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17B6C340-2FEE-4FD4-BDEA-46C49264A44D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D993FF0F-40E5-4A0D-9172-3C8155A0F8B2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D993FF0F-40E5-4A0D-9172-3C8155A0F8B2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D993FF0F-40E5-4A0D-9172-3C8155A0F8B2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D993FF0F-40E5-4A0D-9172-3C8155A0F8B2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7F21AA6-2193-4E27-A312-5EB66ED9E4D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7F21AA6-2193-4E27-A312-5EB66ED9E4D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7F21AA6-2193-4E27-A312-5EB66ED9E4D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7F21AA6-2193-4E27-A312-5EB66ED9E4D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE5DA8D9-E78B-4649-9B02-D524D0BA0350}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE5DA8D9-E78B-4649-9B02-D524D0BA0350}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE5DA8D9-E78B-4649-9B02-D524D0BA0350}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE5DA8D9-E78B-4649-9B02-D524D0BA0350}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1332F20C-810E-49F0-8956-DB9B05BDA71F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1332F20C-810E-49F0-8956-DB9B05BDA71F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1332F20C-810E-49F0-8956-DB9B05BDA71F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1332F20C-810E-49F0-8956-DB9B05BDA71F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF41BF36-6A30-490A-839A-1473485D2EAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF41BF36-6A30-490A-839A-1473485D2EAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF41BF36-6A30-490A-839A-1473485D2EAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF41BF36-6A30-490A-839A-1473485D2EAE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F606BFC-846E-4C84-849D-0AC926B81860}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F606BFC-846E-4C84-849D-0AC926B81860}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F606BFC-846E-4C84-849D-0AC926B81860}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F606BFC-846E-4C84-849D-0AC926B81860}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E96EDF56-311B-4852-89E2-0CDCAA0B6D97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E96EDF56-311B-4852-89E2-0CDCAA0B6D97}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E96EDF56-311B-4852-89E2-0CDCAA0B6D97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E96EDF56-311B-4852-89E2-0CDCAA0B6D97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95C26E78-B76A-44D8-838B-80658AE9FF63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95C26E78-B76A-44D8-838B-80658AE9FF63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95C26E78-B76A-44D8-838B-80658AE9FF63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95C26E78-B76A-44D8-838B-80658AE9FF63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD90479B-5B97-4FEF-9030-9871D972E545}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD90479B-5B97-4FEF-9030-9871D972E545}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD90479B-5B97-4FEF-9030-9871D972E545}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD90479B-5B97-4FEF-9030-9871D972E545}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8009815-7348-4845-B0F8-B508CFB26002}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8009815-7348-4845-B0F8-B508CFB26002}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8009815-7348-4845-B0F8-B508CFB26002}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8009815-7348-4845-B0F8-B508CFB26002}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{205230B3-4E83-47D0-AC5A-902CB4ED7340} = {41C652EF-AA1A-419C-AB0E-1A1583BFCF4C}
+		{B46108FC-DE75-4057-96D5-8DA79A495E1C} = {205230B3-4E83-47D0-AC5A-902CB4ED7340}
+		{9C7882F0-A4BC-4B08-9563-5EBF6D59DCE0} = {205230B3-4E83-47D0-AC5A-902CB4ED7340}
+		{5879948B-ED84-47C8-A3A4-3A2ECED573FA} = {41C652EF-AA1A-419C-AB0E-1A1583BFCF4C}
+		{08A5E26C-2380-4702-ACB7-4E0AEA995089} = {5879948B-ED84-47C8-A3A4-3A2ECED573FA}
+		{5B6C71FC-10BC-4643-8F8B-4AB3C7063113} = {5879948B-ED84-47C8-A3A4-3A2ECED573FA}
+		{8492F01D-D4F5-4E8B-BCB5-56901365C4E5} = {8D988A92-9AEC-405B-93E1-0C1DC1217395}
+		{7383526E-21BC-47E9-A366-67C18EDF2309} = {45B2CD9C-A2BB-45FF-AF01-9EA6D15CCA59}
+		{CE9329AA-910D-4551-802A-8188A46F4D84} = {C7D9ABD2-889C-4C82-8396-4541F3686C38}
+		{58AD3524-9058-4E84-9C7F-27D853A6B73F} = {8D988A92-9AEC-405B-93E1-0C1DC1217395}
+		{17B6C340-2FEE-4FD4-BDEA-46C49264A44D} = {41C652EF-AA1A-419C-AB0E-1A1583BFCF4C}
+		{D993FF0F-40E5-4A0D-9172-3C8155A0F8B2} = {03BBDCC9-C993-48D0-9C2D-C27E531F3484}
+		{A7F21AA6-2193-4E27-A312-5EB66ED9E4D1} = {45B2CD9C-A2BB-45FF-AF01-9EA6D15CCA59}
+		{DE5DA8D9-E78B-4649-9B02-D524D0BA0350} = {C7D9ABD2-889C-4C82-8396-4541F3686C38}
+		{79240DE0-B570-45BA-A70E-EC45963C8349} = {C7D9ABD2-889C-4C82-8396-4541F3686C38}
+		{1332F20C-810E-49F0-8956-DB9B05BDA71F} = {79240DE0-B570-45BA-A70E-EC45963C8349}
+		{EF41BF36-6A30-490A-839A-1473485D2EAE} = {79240DE0-B570-45BA-A70E-EC45963C8349}
+		{6F606BFC-846E-4C84-849D-0AC926B81860} = {41C652EF-AA1A-419C-AB0E-1A1583BFCF4C}
+		{E96EDF56-311B-4852-89E2-0CDCAA0B6D97} = {075B22DF-9441-4750-9348-C9D8706F2A38}
+		{95C26E78-B76A-44D8-838B-80658AE9FF63} = {075B22DF-9441-4750-9348-C9D8706F2A38}
+		{075B22DF-9441-4750-9348-C9D8706F2A38} = {8D988A92-9AEC-405B-93E1-0C1DC1217395}
+		{FD90479B-5B97-4FEF-9030-9871D972E545} = {C7D9ABD2-889C-4C82-8396-4541F3686C38}
+		{A8009815-7348-4845-B0F8-B508CFB26002} = {5879948B-ED84-47C8-A3A4-3A2ECED573FA}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E17CA1A-E205-49B6-B1BE-CBF835B3E57D}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 21
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://pearupdating.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PearUp.Api\\PearUp.Api.csproj
+		SccProjectName1 = PearUp.Api
+		SccLocalPath1 = PearUp.Api
+		SccProjectUniqueName2 = PearUp.Authentication\\PearUp.Authentication.csproj
+		SccProjectTopLevelParentUniqueName2 = PearUp.Api.sln
+		SccProjectName2 = PearUp.Authentication
+		SccLocalPath2 = PearUp.Authentication
+		SccProjectUniqueName3 = PearUp.ServiceConfiguration\\PearUp.ServiceConfiguration.csproj
+		SccProjectTopLevelParentUniqueName3 = PearUp.Api.sln
+		SccProjectName3 = PearUp.ServiceConfiguration
+		SccLocalPath3 = PearUp.ServiceConfiguration
+		SccProjectUniqueName4 = PearUp.CommonEntity\\PearUp.CommonEntity.csproj
+		SccProjectTopLevelParentUniqueName4 = PearUp.Api.sln
+		SccProjectName4 = PearUp.CommonEntity
+		SccLocalPath4 = PearUp.CommonEntity
+		SccProjectUniqueName5 = PearUp.Repository\\PearUp.Repository.csproj
+		SccProjectTopLevelParentUniqueName5 = PearUp.Api.sln
+		SccProjectName5 = PearUp.Repository
+		SccLocalPath5 = PearUp.Repository
+		SccProjectUniqueName6 = PearUp.IRepository\\PearUp.IRepository.csproj
+		SccProjectTopLevelParentUniqueName6 = PearUp.Api.sln
+		SccProjectName6 = PearUp.IRepository
+		SccLocalPath6 = PearUp.IRepository
+		SccProjectUniqueName7 = PearUp.DTO\\PearUp.DTO.csproj
+		SccProjectTopLevelParentUniqueName7 = PearUp.Api.sln
+		SccProjectName7 = PearUp.DTO
+		SccLocalPath7 = PearUp.DTO
+		SccProjectUniqueName8 = PearUp.Tests\\PearUp.Tests.csproj
+		SccProjectTopLevelParentUniqueName8 = PearUp.Api.sln
+		SccProjectName8 = PearUp.Tests
+		SccLocalPath8 = PearUp.Tests
+		SccProjectUniqueName9 = PearUp.Constants\\PearUp.Constants.csproj
+		SccProjectTopLevelParentUniqueName9 = PearUp.Api.sln
+		SccProjectName9 = PearUp.Constants
+		SccLocalPath9 = PearUp.Constants
+		SccProjectUniqueName10 = PearUp.MongoRepository\\PearUp.MongoRepository.csproj
+		SccProjectTopLevelParentUniqueName10 = PearUp.Api.sln
+		SccProjectName10 = PearUp.MongoRepository
+		SccLocalPath10 = PearUp.MongoRepository
+		SccProjectUniqueName11 = PearUp.LoggingFramework\\PearUp.LoggingFramework.csproj
+		SccProjectTopLevelParentUniqueName11 = PearUp.Api.sln
+		SccProjectName11 = PearUp.LoggingFramework
+		SccLocalPath11 = PearUp.LoggingFramework
+		SccProjectUniqueName12 = PearUp.ILoggingFramework\\PearUp.ILoggingFramework.csproj
+		SccProjectTopLevelParentUniqueName12 = PearUp.Api.sln
+		SccProjectName12 = PearUp.ILoggingFramework
+		SccLocalPath12 = PearUp.ILoggingFramework
+		SccProjectUniqueName13 = PearUp.Factories\\PearUp.Factories.csproj
+		SccProjectTopLevelParentUniqueName13 = PearUp.Api.sln
+		SccProjectName13 = PearUp.Factories
+		SccLocalPath13 = PearUp.Factories
+		SccProjectUniqueName14 = PearUp.Business\\PearUp.ApplicationServices.csproj
+		SccProjectTopLevelParentUniqueName14 = PearUp.Api.sln
+		SccProjectName14 = PearUp.Business
+		SccLocalPath14 = PearUp.Business
+		SccProjectUniqueName15 = PearUp.IBusiness\\PearUp.IApplicationServices.csproj
+		SccProjectTopLevelParentUniqueName15 = PearUp.Api.sln
+		SccProjectName15 = PearUp.IBusiness
+		SccLocalPath15 = PearUp.IBusiness
+		SccProjectUniqueName16 = PearUp.BusinessEntity\\PearUp.DomainEntity.csproj
+		SccProjectTopLevelParentUniqueName16 = PearUp.Api.sln
+		SccProjectName16 = PearUp.BusinessEntity
+		SccLocalPath16 = PearUp.BusinessEntity
+		SccProjectUniqueName17 = PearUp.DomainServices\\PearUp.DomainServices.csproj
+		SccProjectTopLevelParentUniqueName17 = PearUp.Api.sln
+		SccProjectName17 = PearUp.DomainServices
+		SccLocalPath17 = PearUp.DomainServices
+		SccProjectUniqueName18 = PearUp.IDomainServices\\PearUp.IDomainServices.csproj
+		SccProjectTopLevelParentUniqueName18 = PearUp.Api.sln
+		SccProjectName18 = PearUp.IDomainServices
+		SccLocalPath18 = PearUp.IDomainServices
+		SccProjectUniqueName19 = PearUp.Infrastructure\\PearUp.Infrastructure.csproj
+		SccProjectTopLevelParentUniqueName19 = PearUp.Api.sln
+		SccProjectName19 = PearUp.Infrastructure
+		SccLocalPath19 = PearUp.Infrastructure
+		SccProjectUniqueName20 = PearUp.Azure\\PearUp.Azure.csproj
+		SccProjectTopLevelParentUniqueName20 = PearUp.Api.sln
+		SccProjectName20 = PearUp.Azure
+		SccLocalPath20 = PearUp.Azure
+	EndGlobalSection
+EndGlobal

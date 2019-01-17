@@ -1,0 +1,2 @@
+2018-06-07 19:39:07,771 -com.ggktech.service.PublicLibrary -INFO - MobileEmulation is started.
+2018-06-07 19:39:20,783 -com.ggktech.utils.Reporter -INFO - MobileEmulation is failed due to reason : com.codoid.products.exception.FilloException: No records found

@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="2.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PearUp.Business\PearUp.ApplicationServices.csproj" />
+    <ProjectReference Include="..\PearUp.DomainServices\PearUp.DomainServices.csproj" />
+    <ProjectReference Include="..\PearUp.Factories\PearUp.Factories.csproj" />
+    <ProjectReference Include="..\PearUp.IBusiness\PearUp.IApplicationServices.csproj" />
+    <ProjectReference Include="..\PearUp.IDomainServices\PearUp.IDomainServices.csproj" />
+    <ProjectReference Include="..\PearUp.IRepository\PearUp.IRepository.csproj" />
+    <ProjectReference Include="..\PearUp.MongoRepository\PearUp.MongoRepository.csproj" />
+    <ProjectReference Include="..\PearUp.Repository\PearUp.Repository.csproj" />
+  </ItemGroup>
+
+</Project>

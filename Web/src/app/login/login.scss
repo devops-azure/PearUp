@@ -1,0 +1,29 @@
+@import '../layout/sass/conf/conf';
+@import '../layout/color-variables';
+
+/*--------From Admin---------*/
+
+.login-section {
+    .auth-logo {
+        margin-top: 50px;
+        border-radius: 80px 0px 0px 0px;
+
+        img{
+            text-align: center;
+        }
+    }
+    .auth-block {
+        background: #FFF;
+        padding: 45px 25px 25px 45px;
+        box-shadow: 0 10px 10px -2px rgba(0,0,0,0.12),0 -2px 10px -2px rgba(0,0,0,0.12); 
+        border-top: 6px solid $login-border-color;
+      
+    }
+    .input-group-text{
+        background: $login-border-color;
+        color: #fff;
+    }
+    .login-error{
+        margin-left: -15px;
+    }
+}

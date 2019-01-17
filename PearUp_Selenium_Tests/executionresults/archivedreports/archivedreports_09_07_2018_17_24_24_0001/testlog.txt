@@ -1,0 +1,2 @@
+2018-07-09 17:23:42,807 -com.ggktech.service.PublicLibrary -INFO - PU_FailingInterest is started.
+2018-07-09 17:24:06,887 -com.ggktech.utils.Reporter -INFO - PU_FailingInterest is failed due to reason : 'No records found' is displayed instead of 'Interest Name3883330'

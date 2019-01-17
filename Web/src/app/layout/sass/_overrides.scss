@@ -1,0 +1,414 @@
+@import "conf/variables";
+@import "primeng/primengtheme";
+@import "primeng/primeng.min";
+
+$blue-theme: #326a96;
+$lightgreen-theme:#61b517;
+$red-theme:#d9534f;
+$light-blue-theme:#ecf7fd;
+
+.cursor-pointer {
+    cursor: pointer !important;
+}
+
+.fa-darkcyan {
+    color: $blue-theme !important;
+}
+
+.fa-fontsize {
+    font-size: 1.3em !important;
+}
+
+.padding-10 {
+    padding: 10px !important;
+}
+
+.grid-panel {
+    margin: auto !important;
+    margin-top: 15px;
+}
+
+.row-no-margin {
+    margin: 0 !important;
+}
+
+.btn-no-transition {
+    transition: none !important;
+    margin: 10px;
+    margin-left: 85%;
+}
+
+.dialog-modal {
+
+    @media (min-width: 900px) {
+        width: 60%;
+        top: 14%;
+        left: 32%;
+        position: absolute;
+    }
+
+    .modal-header {
+        background-color: $blue-theme !important;
+        border-top-left-radius: 4px;
+        border-top-right-radius: 4px;
+        font-size: 16px;
+        color: white;
+    }
+
+    label {
+        margin-top: 10px;
+      
+        @media screen and (max-width : 768px) {
+            display: none;
+        }
+    }
+}
+
+.text-align-right {
+    text-align: right;
+}
+
+.color-white {
+    color: white;
+}
+
+.padding-success {
+    padding-top: 50px;
+    padding-left: 100px;
+}
+
+.bg-success {
+    background-color: rgba(92, 184, 92, 0.46) !important;
+}
+
+.card {
+    background-color: rgba(20, 120, 190, 0.5) !important;
+}
+
+.btn-info {
+    background: $blue-theme !important;
+}
+
+.collapse-menu-link {
+    color: #333 !important;
+
+    &:hover {
+        color: #808080 !important;
+    }
+}
+
+.sidebar-hover-elem {
+    background: white;
+}
+
+.btn:hover {
+    transform: none !important;
+}
+
+data-table-header {
+    display: none;
+}
+
+.pagination-box {
+    margin-top: 20px !important;
+}
+
+
+.pagination-limit {
+    span {
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+
+    input {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+        width: 75% !important;
+    }
+}
+
+.pagination-page {
+    input {
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+    }
+
+    .input-group-addon {
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+}
+
+.font-icon, .fa-2x {
+    font-size: 1.1rem;
+}
+.app-smart-action > .fa {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+.active{
+    font-size:1.2em;
+    color:$lightgreen-theme;
+}
+.inactive{
+    font-size:1.2em;
+    color:$red-theme;
+}
+
+.ng2-smart-table {
+    margin-top: 30px;
+
+    .ng2-smart-titles {
+        background-color: $blue-theme;
+        color: white;
+
+        a {
+            color: white;
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}
+
+.ng2-smart-pagination-nav {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+/*tbody tr:nth-child(even) {
+    @media (min-width: 768px) {
+        background-color: rgb(235, 247, 253);
+    }
+    
+}*/
+
+.alt-blue-color{
+    background:$light-blue-theme;
+}
+
+.table > tbody > tr > td {
+    line-height: 25px !important;
+}
+
+.ng2-smart-pagination-nav {
+    display: flex;
+    justify-content: center;
+}
+
+.close {
+    opacity: 1;
+    color: white;
+}
+
+.ng2-smart-row {
+    &.selected {
+        background: none !important;
+    }
+}
+
+.panel {
+    background: #ffffff;
+    border-color: #c2ccd9;
+    border-top-color: #2b749d;
+    position: relative;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    border-top: 2px solid #ccc;
+    margin-bottom: 15px;
+    width: 100%;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+
+    .panel-heading {
+        color: #444;
+        border-bottom-color: #c2ccd9;
+        background: rgb(229, 243, 251);/*rgba(127, 136, 144, 0.38);*/
+        display: block;
+        padding: 5px 15px 6px 15px;
+        position: relative;
+        border-bottom: 1px solid #ccc;
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+
+        .box-title {
+            color: #2d2d2d;
+            display: inline-block;
+            font-size: 115%;
+            margin: 0;
+            line-height: 1;
+            font-weight: 600;
+        }
+    }
+
+
+    .box-body {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        padding: 15px;
+        padding-top: 0;
+        overflow-x: scroll;
+    }
+}
+
+.padding-top{
+    padding-top:10px;
+}
+
+thead .ng2-smart-titles {
+    @media (max-width: 750px) {
+        display: none;
+    }
+}
+
+
+
+.ng2-smart-table-container {
+     @media (min-width: 768px) {
+         .ng2-smart-filters {
+                background-color: rgb(235, 247, 253);
+         }
+     }
+
+    @media (max-width: 750px) {
+        .ng2-smart-table {
+            thead {
+                display: none;
+            }
+
+            tbody {
+                tr {
+                    border-radius: 4px !important;
+                    padding: 10px;
+
+                    td {
+                        border: none !important;
+                    }
+                }
+            }
+        }
+    }
+}
+
+/*datatable resolution for admin view for all supported devices*/
+
+.admin thead .ng2-smart-th {
+    @media (min-width: 768px) {
+        width: 14% !important;
+    }
+}
+
+.admin thead .ng2-smart-th:not(:nth-child(4)), .admin thead .ng2-smart-th:not(:nth-child(5)) {
+    @media (min-width: 768px) {
+        width: 14% !important;
+    }
+}
+
+.admin thead .ng2-smart-th:nth-child(4), .admin thead .ng2-smart-th:nth-child(5) {
+    @media (min-width: 768px) {
+        width: 18% !important;
+    }
+}
+
+.admin tbody td:not(:first-child), .admin tbody td:not(:nth-child(4)), .admin tbody td:not(:nth-child(5)) {
+    @media (min-width: 768px) {
+        width: 14% !important;
+    }
+}
+
+.admin tbody td:nth-child(4), .admin tbody td:nth-child(5) {
+    @media (min-width: 768px) {
+        width: 18% !important;
+    }
+}
+
+.admin tbody td:first-child {
+    @media (min-width: 768px) {
+        width: 8% !important;
+    }
+}
+
+.admin thead .ng2-smart-actions {
+    @media (min-width: 768px) {
+        width: 8% !important;
+    }
+}
+
+.admin .ng2-smart-actions-title {
+    @media (min-width: 768px) {
+        width: 8% !important;
+    }
+}
+
+
+/*datatable resolution for client view for all supported devices*/ 
+
+.client thead .ng2-smart-th {
+    @media (min-width: 768px) {
+        width: 18% !important;
+    }
+}
+
+.client thead .ng2-smart-th:not(:nth-child(3)), .client thead .ng2-smart-th:not(:nth-child(4)) {
+    @media (min-width: 768px) {
+        width: 18% !important;
+    }
+}
+
+.client thead .ng2-smart-th:nth-child(3), .client thead .ng2-smart-th:nth-child(4) {
+    @media (min-width: 768px) {
+        width: 19% !important;
+    }
+}
+
+.client tbody td:not(:first-child), .client tbody td:not(:nth-child(3)), .client tbody td:not(:nth-child(4)) {
+    @media (min-width: 768px) {
+        width: 18% !important;
+    }
+}
+
+.client tbody td:nth-child(3), .client tbody td:nth-child(4) {
+    @media (min-width: 768px) {
+        width: 19% !important;
+    }
+}
+
+.client tbody td:first-child {
+    @media (min-width: 768px) {
+        width: 8% !important;
+    }
+}
+
+.client thead .ng2-smart-actions {
+    @media (min-width: 768px) {
+        width: 8% !important;
+    }
+}
+
+.client .ng2-smart-actions-title {
+    @media (min-width: 768px) {
+        width: 8% !important;
+    }
+  }
+
+   .add{
+        display: none;
+        @media (max-width : 750px) {
+            display: block;
+            font-size: 1.4em;
+            color: rgb(59, 115, 158);
+        }
+    }
+   tbody .remove_row {
+    @media (min-width: $resM) {
+        display: none;
+    }
+}
+   .invalid_background{
+       border-color:red;
+
+   }

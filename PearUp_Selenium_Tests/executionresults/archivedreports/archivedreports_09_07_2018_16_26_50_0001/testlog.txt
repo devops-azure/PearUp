@@ -1,0 +1,6 @@
+2018-07-09 16:25:08,757 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is started.
+2018-07-09 16:25:39,845 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is passed.
+2018-07-09 16:25:41,384 -com.ggktech.service.PublicLibrary -INFO - PU_MenuListItems is started.
+2018-07-09 16:26:10,467 -com.ggktech.service.PublicLibrary -INFO - PU_MenuListItems is passed.
+2018-07-09 16:26:11,527 -com.ggktech.service.PublicLibrary -INFO - PU_FailingInterest is started.
+2018-07-09 16:26:33,433 -com.ggktech.utils.Reporter -INFO - PU_FailingInterest is failed due to reason : 'No records found' is displayed instead of 'Interest Name8043839'

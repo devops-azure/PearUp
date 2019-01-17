@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="4" name="Failed suite [Default Suite]">
+  <test name="PearUpChrome,54,Windows,10PU_CreatingInterests(failed)">
+    <parameter name="server" value="LOCAL"/>
+    <parameter name="os" value="Windows"/>
+    <parameter name="osVersion" value="10"/>
+    <parameter name="sheetName" value="PearUp"/>
+    <parameter name="browserVersion" value="54"/>
+    <parameter name="testEnv" value="PU"/>
+    <parameter name="browserType" value="Chrome"/>
+    <classes>
+      <class name="com.ggktech.PearUp.PU_CreatingInterests">
+        <methods>
+          <include name="testScript"/>
+          <include name="testSetUp"/>
+          <include name="testTearDown"/>
+        </methods>
+      </class> <!-- com.ggktech.PearUp.PU_CreatingInterests -->
+    </classes>
+  </test> <!-- PearUpChrome,54,Windows,10PU_CreatingInterests(failed) -->
+  <test name="PearUpChrome,54,Windows,10PU_MenuListItems(failed)">
+    <parameter name="server" value="LOCAL"/>
+    <parameter name="os" value="Windows"/>
+    <parameter name="osVersion" value="10"/>
+    <parameter name="sheetName" value="PearUp"/>
+    <parameter name="browserVersion" value="54"/>
+    <parameter name="testEnv" value="PU"/>
+    <parameter name="browserType" value="Chrome"/>
+    <classes>
+      <class name="com.ggktech.PearUp.PU_MenuListItems">
+        <methods>
+          <include name="testScript"/>
+          <include name="testSetUp"/>
+          <include name="testTearDown"/>
+        </methods>
+      </class> <!-- com.ggktech.PearUp.PU_MenuListItems -->
+    </classes>
+  </test> <!-- PearUpChrome,54,Windows,10PU_MenuListItems(failed) -->
+  <test name="PearUpChrome,54,Windows,10PU_FailingInterest(failed)">
+    <parameter name="server" value="LOCAL"/>
+    <parameter name="os" value="Windows"/>
+    <parameter name="osVersion" value="10"/>
+    <parameter name="sheetName" value="PearUp"/>
+    <parameter name="browserVersion" value="54"/>
+    <parameter name="testEnv" value="PU"/>
+    <parameter name="browserType" value="Chrome"/>
+    <classes>
+      <class name="com.ggktech.PearUp.PU_FailingInterest">
+        <methods>
+          <include name="testScript"/>
+          <include name="testSetUp"/>
+          <include name="testTearDown"/>
+        </methods>
+      </class> <!-- com.ggktech.PearUp.PU_FailingInterest -->
+    </classes>
+  </test> <!-- PearUpChrome,54,Windows,10PU_FailingInterest(failed) -->
+</suite> <!-- Failed suite [Default Suite] -->

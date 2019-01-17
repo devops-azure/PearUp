@@ -1,0 +1,11 @@
+<div>
+    <section class="content-top clearfix">
+       <h1 class="al-title">{{ activePageTitle || 'Dashboard' }}</h1>
+        <div class="breadcrumbclass" *ngIf="activePageTitle!='Dashboard'">
+            <ul class="breadcrumb al-breadcrumb">
+                <li class="breadcrumb-item"><a routerLink="/dashboard">Dashboard</a></li>
+                <li class="breadcrumb-item active">{{ activePageTitle }}</li>
+            </ul>
+        </div>
+    </section>
+</div>

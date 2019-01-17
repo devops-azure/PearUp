@@ -1,0 +1,161 @@
+@import '../../sass/conf/conf';
+@import '../../color-variables';
+.page-top {
+    background: $page-top-background;
+    height: 56px;
+    width: 100%;
+    padding: 10px;
+    z-index: 904;
+    position: fixed;
+    box-shadow: 0px 0 5px $header-bottom-border-shadow;
+    .toggle-sidebar {
+        float: left;
+        margin-top: 10px;
+        text-decoration: none;
+        margin-left: 10px;
+    }
+    a {
+        text-decoration: none;
+    }
+    a.al-logo {
+        float: left;
+        margin-left: 10px;
+        img {
+            height: 46px;
+        }
+    }
+    .user-profile {
+        float: right;
+        margin-top: 6px;
+        .al-user-profile {
+            position: relative;
+            .dropdown-toggle {
+                display: block;
+                font-weight: bold;
+                &::after {
+                    @media screen and (max-width: 767px) {
+                        display: none;
+                    }
+                }
+                &:hover {
+                    transform: scale(1.1);
+                }
+                img {
+                    width: 25px;
+                    height: 25px;
+                    border-radius: 50%;
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    .dropdown-menu {
+        border-radius: 4px;
+        width: 250px;
+        margin-left: -120px;
+        padding-top: 1px;
+        background-color: $dropdown-menu-background; 
+        .user-header {
+            height: 175px;
+            padding: 10px;
+            text-align: center;
+            background-color: $page-top-background;
+            img {
+                z-index: 5;
+                height: 90px;
+                width: 90px; 
+            }
+            p {
+                z-index: 5;
+                font-size: 17px;
+                margin-top: 10px;
+                small {
+                    display: block;
+                    font-size: 12px;
+                }
+            }
+        }
+        .user-body {
+            padding: 15px;
+            border-bottom: 1px solid $user-body-border;
+            border-top: 1px solid $user-body-border;
+            background-color: $white;
+        }
+        .user-footer {
+            padding: 10px;
+            .btn-flat {
+                border-radius: unset;
+                border: 1px solid $user-body-border;
+                text-decoration: none !important;
+                color: $black;
+                font-weight: unset;
+            }
+        }
+    }
+    .logo-space{
+        width: $sidebar-width;
+        margin-left: -10px;
+        color: $btn-primary-color;
+        a {
+            color:$btn-primary-color;
+        }
+    }
+}
+
+@media screen and (max-width: $resS) {
+    .search {
+        display: none;
+    }
+}
+
+  .header{
+      .header-block-nav{
+        justify-content: flex-end;
+      }
+    .header-block-nav > ul > li {
+        display: table-cell;
+        position: relative;
+        }
+         .header-block-nav > ul > li:before {
+            display: block;
+            content: " ";
+            width: 1px;
+            height: 24px;
+            top: 50%;
+            margin-top: -12px;
+            background-color: #8b9cb1;
+            position: absolute;
+            left: 0; };
+        .header-block-nav > ul > li:first-child:before {
+            display: none; };
+        .header-block-nav > ul > li > a {
+            padding: 0 15px;
+            color: #4f5f6f; }
+        .header-block-nav > ul > li > a:hover {
+            color: #85CE36; };
+        .header-block-nav .dropdown-menu {
+         margin-top: 15px; };
+        .img {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            border-radius: 4px;
+            background-color: #8b9cb1;
+            color: #ffffff;
+            text-align: center;
+            margin-right: 10px;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            vertical-align: middle;
+        }
+  } 
+  @media screen and (max-width: 480px) {
+.header-block-nav{
+    transform: translate(190px,-50px);
+}
+.collapse {
+    display: block;
+}
+  }

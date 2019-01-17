@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.2.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.2.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PearUp.BusinessEntity\PearUp.DomainEntity.csproj" />
+    <ProjectReference Include="..\PearUp.CommonEntity\PearUp.CommonEntity.csproj" />
+    <ProjectReference Include="..\PearUp.Constants\PearUp.Constants.csproj" />
+    <ProjectReference Include="..\PearUp.IRepository\PearUp.IRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNetCore.Http.Abstractions">
+      <HintPath>/usr/share/dotnet/sdk/NuGetFallbackFolder/microsoft.aspnetcore.http.abstractions/2.0.1/lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>/usr/share/dotnet/sdk/NuGetFallbackFolder/microsoft.extensions.options/2.0.0/lib/netstandard2.0/Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens">
+      <HintPath>/usr/share/dotnet/sdk/NuGetFallbackFolder/microsoft.identitymodel.tokens/5.1.4/lib/netstandard1.4/Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>/usr/share/dotnet/sdk/NuGetFallbackFolder/system.identitymodel.tokens.jwt/5.1.4/lib/netstandard1.4/System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

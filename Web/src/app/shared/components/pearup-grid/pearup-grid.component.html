@@ -1,0 +1,29 @@
+  <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none" *ngIf="config.filter">
+    <div class="row">
+        <div class="col-12 col-sm-4 col-md-3">
+            <i class="fa fa-search icon-primary"></i>
+            <input #searchText type="text" style="width: 90%" pInputText placeholder="{{config.filterPlaceholderText}}">
+        </div>
+        <div class="col-12 col-sm-4 col-md-3 pull-right">
+          <a (click)="onAddRow($event,item)" class="icon-primary btn"  href="javascript:void(0)"  [attr.disabled]="true"> 
+            <i class="fa fa-plus-square fa-2x"></i>
+          </a>
+      </div>
+  </div>
+  </div>
+  <!-- {{datasource|json}} -->
+  <p-dataTable [value]="datasource" [rows]="config.rowsPerPage" [paginator]="config.pagination" [pageLinks]="config.pageLinks" [responsive]="true" [stacked]="true" [editable]="config.editable"  [globalFilter]="true"  (onEdit)="onEdit($event)" (onEditComplete)="onEditComplete($event)" #dt>
+      <p-column *ngFor="let col of config.cellConfig" [field]="col.field" [editable]="col.editable" [header]="col.header" styleClass="{{col.center?'col-align-center':''}}"></p-column>
+  <!-- <p-column styleClass="col-button" field="id" header="Id"></p-column>
+  <p-column field="interestName" header="Interest Name" [editable]="true"></p-column>
+  <p-column field="interestDescription" header="Interest Description" [editable]="true"></p-column>
+  -->
+  <p-column styleClass="col-align-center" header="Action">
+    <ng-template let-item="rowData" pTemplate="body">
+      <a (click)="onUpdateRow($event,item)" class="icon-primary btn" [ngClass]="item.enabled?'':'disabled'" href="javascript:void(0)"  [attr.disabled]="true"> 
+        <i class="fa fa-save fa-2x"></i>
+      </a>
+    </ng-template>
+  </p-column> 
+  </p-dataTable>
+  <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>

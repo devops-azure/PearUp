@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PearUp.Authentication\PearUp.Authentication.csproj" />
+    <ProjectReference Include="..\PearUp.BusinessEntity\PearUp.DomainEntity.csproj" />
+    <ProjectReference Include="..\PearUp.CommonEntity\PearUp.CommonEntity.csproj" />
+    <ProjectReference Include="..\PearUp.Constants\PearUp.Constants.csproj" />
+    <ProjectReference Include="..\PearUp.Factories\PearUp.Factories.csproj" />
+    <ProjectReference Include="..\PearUp.IRepository\PearUp.IRepository.csproj" />
+    <ProjectReference Include="..\PearUp.LoggingFramework\PearUp.LoggingFramework.csproj" />
+  </ItemGroup>
+
+</Project>

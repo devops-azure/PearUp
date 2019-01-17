@@ -1,0 +1,3 @@
+2018-07-09 11:22:43,809 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is started.
+2018-07-09 11:23:31,130 -com.ggktech.service.PublicLibrary -ERROR - Exception in fluentWait()org.openqa.selenium.TimeoutException: Expected condition failed: waiting for com.ggktech.service.PublicLibrary$1@5422526d (tried for 15 second(s) with 100 MILLISECONDS interval)
+2018-07-09 11:23:31,133 -com.ggktech.utils.Reporter -INFO - PU_CreatingInterests is failed due to reason : Element locator 'By.xpath: pearup-grid/p-datatable/div/div[1]/table/tbody/tr[1]/td[3]/span[2]/a' did not match any elements after 15 seconds.

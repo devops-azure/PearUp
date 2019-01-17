@@ -1,0 +1,2 @@
+2018-07-07 14:57:42,765 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is started.
+2018-07-07 14:58:10,418 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is passed.

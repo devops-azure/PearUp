@@ -1,0 +1,8 @@
+stages:
+  - selenium-test
+
+SeleniumTestCases:
+  stage: selenium-test
+  image: swamykonanki/swamyselenium
+  script:
+    - mvn clean install exec:java -Dexec.classpathScope=compile -Dexec.cleanupDaemonThreads=false

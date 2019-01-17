@@ -1,0 +1,12 @@
+<aside class="al-sidebar" (mouseleave)="hoverElemTop=outOfArea" (mouseover)="toggleMenu(false,true)" (mouseout)="toggleMenu(true)" sidebarResize>
+  <ul id="al-sidebar-list" class="al-sidebar-list" ggkSlimScroll [ggkSlimScrollOptions]="{height: menuHeight}">
+    
+    <app-menu-item
+      [menuItem]="item"
+      (itemHover)="hoverItem($event)"
+      (toggleSubMenu)="toggleSubMenu($event)"
+      *ngFor="let item of menuItems"></app-menu-item>
+  </ul>
+  <div class="sidebar-hover-elem" [ngStyle]="{top: hoverElemTop + 'px', height: hoverElemHeight + 'px'}"
+       [ngClass]="{'show-hover-elem': showHoverElem }"></div>
+</aside>

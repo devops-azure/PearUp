@@ -1,0 +1,3 @@
+2018-07-06 18:21:03,561 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is started.
+2018-07-06 18:21:30,984 -com.ggktech.service.PublicLibrary -ERROR - Exception in fluentWait()org.openqa.selenium.TimeoutException: Expected condition failed: waiting for com.ggktech.service.PublicLibrary$1@1473c21 (tried for 15 second(s) with 100 MILLISECONDS interval)
+2018-07-06 18:21:30,989 -com.ggktech.utils.Reporter -INFO - PU_CreatingInterests is failed due to reason : Element locator 'By.id: inputEmail' did not match any elements after 15 seconds.

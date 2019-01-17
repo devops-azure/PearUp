@@ -1,0 +1,6 @@
+2018-07-09 17:39:02,261 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is started.
+2018-07-09 17:39:32,052 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is passed.
+2018-07-09 17:39:33,465 -com.ggktech.service.PublicLibrary -INFO - PU_MenuListItems is started.
+2018-07-09 17:39:58,169 -com.ggktech.utils.Reporter -INFO - PU_MenuListItems is failed due to reason : duplicate elements
+2018-07-09 17:39:59,649 -com.ggktech.service.PublicLibrary -INFO - PU_FailingInterest is started.
+2018-07-09 17:40:19,644 -com.ggktech.utils.Reporter -INFO - PU_FailingInterest is failed due to reason : 'No records found' is displayed instead of 'Interest Name4803076'

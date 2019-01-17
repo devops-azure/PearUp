@@ -1,0 +1,2 @@
+2018-07-09 13:09:30,779 -com.ggktech.service.PublicLibrary -INFO - PU_FailingInterest is started.
+2018-07-09 13:09:54,004 -com.ggktech.utils.Reporter -INFO - PU_FailingInterest is failed due to reason : 'Interest1' is displayed instead of 'Interest Name2386925'

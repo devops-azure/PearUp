@@ -1,0 +1,2 @@
+2018-07-07 16:51:55,754 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is started.
+2018-07-07 16:52:29,339 -com.ggktech.utils.Reporter -INFO - PU_CreatingInterests is failed due to reason : Interest Description is not displayed

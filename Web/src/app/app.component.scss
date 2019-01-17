@@ -1,0 +1,235 @@
+@import './layout/sass/conf/conf';
+@import "layout/theme";
+@import './layout/color-variables';
+:host /deep/ {
+    @mixin layout-collapsed() {
+        .al-main {
+            margin-left: 50px;
+        }
+        .al-footer {
+            padding-left: 83px;
+        }
+    }
+    @mixin sidebar-collapsed() {
+        .al-sidebar {
+            width: 52px;
+            .fa-angle-down,
+            .fa-angle-up {
+                opacity: 0;
+            }
+            .al-sidebar-sublist {
+                position: absolute;
+                top: -1px;
+                left: 52px;
+                @include bg-translucent-dark(0.8);
+                width: 0;
+                display: block;
+                overflow: hidden;
+                transition: width 0.5s ease;
+                &.slide-right {
+                    width: 135px;
+                }
+                &::before {
+                    display: none;
+                }
+                li {
+                    &::before {
+                        display: none;
+                    }
+                    a {
+                        padding-left: 18px;
+                        padding-right: 18px;
+                        min-width: 130px;
+                        white-space: nowrap;
+                    }
+                }
+            }
+            .sidebar-hover-elem,
+            .sidebar-select-elem {
+                left: 48px;
+            }
+        }
+    }
+    @mixin sidebar-overlap() {
+        .al-sidebar {
+            width: $sidebar-width;
+            @include bg-translucent-dark(0.75);
+            transition: width 0.5s ease;
+            .fa-angle-down,
+            .fa-angle-up {
+                opacity: 1;
+            }
+            .al-sidebar-sublist {
+                // @include default-sublist();
+                top: auto;
+                left: auto;
+                background: none;
+                width: auto;
+                overflow: visible;
+                transition: none;
+            }
+            .sidebar-hover-elem,
+            .sidebar-select-elem {
+                left: $sidebar-width - 4;
+                transition: left 0.5s ease;
+            }
+        }
+    }
+    @mixin sidebar-hidden() {
+        .al-sidebar {
+            width: 0;
+        }
+        .sidebar-hover-elem,
+        .sidebar-select-elem {
+            display: none;
+        }
+    }
+    @media (min-width: 1200px) {
+        .menu-collapsed {
+            @include layout-collapsed();
+        }
+    }
+    @media (max-width: 1200px) and (min-width: $resXS) {
+        @include layout-collapsed();
+    }
+    @media (min-width: $resXS + 1) {
+        .menu-collapsed {
+            @include sidebar-collapsed();
+        }
+    }
+    @media (max-width: 1200px) {
+        @include sidebar-overlap();
+    }
+    @media (max-width: $resXS) {
+        .menu-collapsed {
+            @include sidebar-hidden();
+        }
+        .al-main {
+            margin-left: 0;
+        }
+        .al-footer {
+            padding-left: 0;
+        }
+    }
+}
+
+.main-body {
+    background-color: #f0f3f6;
+    min-height: 100%;
+    position: relative;
+    .content {
+        padding-top: 65px;
+    }
+    .main-footer {
+        position: fixed;
+        width: 100%;
+        background: $sidebar-background-color;
+        padding: 0px 6px 0px 6px;
+        height: 26px;
+        bottom: 0px;
+        margin-top: -27px;
+        color: #444;
+        font-size: 12px;
+        line-height: 26px;
+        margin-top: -1px;
+        -webkit-transition: -webkit-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        -moz-transition: -moz-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        -o-transition: -o-transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        transition: transform 0.3s ease-in-out, margin 0.3s ease-in-out;
+        margin-left: 230px;
+        z-index: 820;
+        margin-left: 0!important;
+        min-height: 0!important;
+        -webkit-transform: translate(0, 0) !important;
+        -ms-transform: translate(0, 0) !important;
+        -o-transform: translate(0, 0) !important;
+        transform: translate(0, 0) !important;
+        em,
+        .pull-right {
+            color: $white;
+        }
+        .tenant-link {
+            color: $logo-color;
+        }
+    }
+}
+
+
+@media(min-width: 768px) {
+    .main-footer .pull-left {
+        margin-left: 220px !important;
+    }
+    .menu-collapsed .main-footer .pull-left {
+        margin-left: 50px !important;
+    }
+}
+
+@media (max-width: 767px) {
+    .main-footer .pull-left {
+        margin-left: 0px;
+    }
+}
+
+@media(max-width:480px) {
+    .main-footer {
+        height: 52px !important;
+    }
+}
+
+.calibriFont14 {
+    font-size: 14px!important;
+    font-family: calibri!important;
+}
+
+.clear {
+    clear: both;
+    margin-bottom: 2px;
+}
+
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 5px solid #42A948;
+    /* green */
+}
+
+input.ng-invalid.ng-touched:not(form) {
+    border-left: 5px solid #a94442;
+    /* red */
+}
+
+p-autocomplete.ng-invalid.ng-touched:not(form) {
+    border-left: 5px solid #a94442;
+    /* red */
+}
+.app{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+//********* COMMON CSS******** 
+fieldset {
+    display: block;
+    margin-left: 2px;
+    margin-right: 2px;
+    padding-top: 0.35em;
+    padding-bottom: 0.625em;
+    padding-left: 0.75em;
+    padding-right: 0.75em;
+    border: 2px groove (internal value) !important;
+}
+.btn-primary{
+    background: $btn-primary-color !important;
+    border-color: $btn-primary-border-color !important;
+}
+.ui-paginator .ui-paginator-page.ui-state-active {
+    background: $btn-primary-color !important;
+    border-color: $btn-primary-border-color !important;
+}
+.icon-primary{
+    color: $btn-primary-color !important;
+    padding:0 !important;
+}
+.col-align-center {
+    text-align: center;
+}

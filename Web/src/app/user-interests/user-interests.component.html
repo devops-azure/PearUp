@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="card">
+    <div class="card-block">
+      <div class="card-body">
+          <!-- <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+            <div class="row">
+                <div class="col-12 col-sm-4 col-md-3">
+                    <i class="fa fa-search icon-primary"></i>
+                    <input #searchText type="text" style="width: 90%" pInputText placeholder="{{constants.searchPlaceholderText}}">
+                </div>
+          </div>
+          </div>
+        <p-dataTable [value]="interests" [rows]="constants.maxRows" [paginator]="true" [pageLinks]="constants.pageLinks" [responsive]="true" [stacked]="stacked" [editable]="true"  [globalFilter]="searchText" #dt>
+          <p-column styleClass="col-button" field="id" header="Id"></p-column>
+          <p-column field="interestName" header="Interest Name" [editable]="true"></p-column>
+          <p-column field="interestDescription" header="Interest Description" [editable]="true"></p-column>
+          <p-column styleClass="col-button" header="Action">
+            <ng-template let-item="rowData" pTemplate="body">
+              <a (click)="onDeleteRow($event,item)" class="icon-primary" href="javascript:void(0)">
+                <i class="fa fa-trash fa-2x"></i>
+              </a>
+            </ng-template>
+          </p-column>
+        </p-dataTable>
+        <p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog> -->
+        <pearup-grid [datasource]="interests" [config]="gridConfig"></pearup-grid>
+      </div>
+    </div>
+  </div>

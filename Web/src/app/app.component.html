@@ -1,0 +1,32 @@
+<app-loader></app-loader>
+<div [ngClass]="{'menu-collapsed': isMenuCollapsed}" baThemeRun>
+    <div class="additional-bg"></div>
+    <div>
+        <app-sidebar *ngIf="currentUser != null"></app-sidebar>
+        <app-page-top *ngIf="currentUser != null"></app-page-top>
+        <div [class.al-main]="currentUser != null">
+            <div [class.al-content]="currentUser != null">
+                <app-content-top *ngIf="currentUser != null"></app-content-top>
+                <section class="content container-fluid" [class.top-padding]="currentUser != null">
+                    <div class="app">
+                    <router-outlet></router-outlet>
+                        
+                    </div>
+                </section>
+            </div>
+        </div>
+        <app-back-top position="200" *ngIf="currentUser != null"></app-back-top>
+        <footer class="main-footer calibriFont14" *ngIf="currentUser != null">
+            <div class="pull-left">
+                <em>PearUp - A Dating App</em>
+            </div>
+            <div class="pull-right">
+                &copy; 2018
+                <strong>
+            <a id="tenantwebsite" href="#" class="tenant-link" target="_blank">PearUp</a>
+        </strong> All Rights Reserved.
+            </div>
+        </footer>
+    </div>
+
+</div>

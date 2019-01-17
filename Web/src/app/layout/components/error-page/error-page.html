@@ -1,0 +1,39 @@
+<div [ngSwitch]="statusCode" class="middle-box text-center animated fadeInDown">
+        
+    <div *ngSwitchDefault>
+        <h1>Error</h1>
+        <h3 class="font-bold">Page Not Found</h3>
+
+        <div class="error-desc">
+            Sorry, but the page you are looking for has note been found. Try checking the URL for error, then hit the refresh button
+            on your browser or try found something else in our app.
+        </div>
+    </div>
+    <div *ngSwitchCase="'401'">
+            <h1>401</h1>
+            <h3 class="font-bold">UnAuthorized</h3>
+    
+            <div class="error-desc">
+                Sorry, but the page you are looking for has note been found. Try checking the URL for error, then hit the refresh button
+                on your browser or try found something else in our app.
+            </div>
+        </div>
+    <div *ngSwitchCase="'404'">
+        <h1>404</h1>
+        <h3 class="font-bold">API not Found</h3>
+
+        <div class="error-desc">
+            Sorry, but the page you are looking for has note been found. Try checking the URL for error, then hit the refresh button
+            on your browser or try found something else in our app.
+        </div>
+    </div>
+    <div *ngSwitchCase="'500'">
+        <h1>500</h1>
+        <h3 class="font-bold">Internal Server Error</h3>
+
+        <div class="error-desc">
+            Sorry, but the page you are looking for has note been found. Try checking the URL for error, then hit the refresh button
+            on your browser or try found something else in our app.
+        </div>
+    </div>
+</div>

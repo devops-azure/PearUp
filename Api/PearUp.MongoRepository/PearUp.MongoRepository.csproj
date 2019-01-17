@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PearUp.BusinessEntity\PearUp.DomainEntity.csproj" />
+    <ProjectReference Include="..\PearUp.Business\PearUp.ApplicationServices.csproj" />
+    <ProjectReference Include="..\PearUp.CommonEntity\PearUp.CommonEntity.csproj" />
+    <ProjectReference Include="..\PearUp.IRepository\PearUp.IRepository.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
+      <HintPath>/usr/share/dotnet/sdk/NuGetFallbackFolder/microsoft.extensions.configuration.abstractions/2.0.0/lib/netstandard2.0/Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options">
+      <HintPath>/usr/share/dotnet/sdk/NuGetFallbackFolder/microsoft.extensions.options/2.0.0/lib/netstandard2.0/Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

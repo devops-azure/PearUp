@@ -1,0 +1,2 @@
+2018-06-15 15:35:04,790 -com.ggktech.service.PublicLibrary -INFO - TS_CreatingLead is started.
+2018-06-15 15:35:50,410 -com.ggktech.utils.Reporter -INFO - TS_CreatingLead is failed due to reason : Leadmangement button is not displayed

@@ -1,0 +1,56 @@
+<div class="clearfix header" scrollPosition maxHeight="50" (scrollChange)="scrolledChanged($event)" [class.scrolled]="isScrolled">
+    <nav class="page-top navbar fixed-top navbar-light navbar-expand-md">
+        <div class=" navbar-brand logo-space">
+            <a (click)="toggleSidebar()" class="fa fa-bars toggle-sidebar hidden-sm-up" href="javascript:void(0)"></a>
+            <a routerLink="/dashboard" class="al-logo clearfix">
+                <span class="resizelogo">
+                    <img src="{{ ( 'pearup-layout-logo' | appPicture:'png' ) }}" border="0" alt="PEARUP" title="PEARUP">
+                </span>
+                PEAR UP
+            </a>
+        </div>
+        <div class="collapse navbar-collapse header-block header-block-nav" id="navbarSupportedContent">
+            <!-- <ul class="navbar-nav mx-auto"></ul>
+            <ul class="navbar-nav pull-sm-right">
+
+                <li class="nav-item">
+                    <div class="dropdown al-user-profile">
+                        <a href="#" class="nav-link profile-toggle-link dropdown-toggle" id="user-profile-dd" data-toggle="dropdown">
+                            <i class="fa fa-user-circle"></i>
+                            <span class="hidden_sm_xs user-color" id="displayUserName">{{name}}</span>
+                        </a>
+                        <ul class="dropdown-menu dropdownCSS">
+                            <li class="user-header">
+                                <i class="fa fa-user-circle fa-5x"></i>
+                                <p>
+                                    <span id="userProfileName">{{name}}</span>
+                                    <br>
+                                    <span id="userDesignation"> Administrator </span>
+                                </p>
+                            </li>
+                            <li class="user-footer">
+                                <div class="pull-right">
+                                    <a (click)="signOut()" id="logout" class="btn btn-default btn-flat"> Logout </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul> -->
+            <ul class="nav-profile pull-sm-right">
+                <li class="profile dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+                        <div class="img" style="background-image: url('assets/img/app/profile/User_logo.png')"> </div>
+                        <span class="name"> John Doe </span>
+                    </a>
+                    <div class="dropdown-menu profile-dropdown-menu" aria-labelledby="dropdownMenu1" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 30px, 0px); top: 0px; left: 0px; will-change: transform;">
+
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" (click)="signOut()">
+                            <i class="fa fa-power-off icon"></i> Logout </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>

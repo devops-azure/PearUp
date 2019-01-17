@@ -1,0 +1,7 @@
+@import '../../../../sass/conf/conf';
+@import '../../../../color-variables';
+
+.al-sidebar-list-item.selected{
+    background-color:$sidebar-background-color-hover;
+    color: $sidebar-background-color;
+}

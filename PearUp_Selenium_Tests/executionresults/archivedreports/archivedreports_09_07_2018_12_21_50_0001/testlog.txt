@@ -1,0 +1,4 @@
+2018-07-09 12:21:13,676 -com.ggktech.service.PublicLibrary -INFO - PU_CreatingInterests is started.
+2018-07-09 12:21:36,061 -com.ggktech.service.PublicLibrary -ERROR - Object with key :  'pInterestDesc_grd' not found in OR.properties file : 
+2018-07-09 12:21:36,065 -com.ggktech.utils.Reporter -INFO - PU_CreatingInterests is failed due to reason : Object with key :  'pInterestDesc_grd' not found in OR.properties file : 
+2018-07-09 12:21:13,234 -com.ggktech.utils.MergeXMLs -ERROR - As no individual xml generated, stopping script execution

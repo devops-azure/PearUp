@@ -1,0 +1,57 @@
+﻿<div class="login-section" [@loginAnimation]>
+    <div class="row">
+        <div class="auth-logo col-12 col-md-4 mx-auto col-lg-5 col-xl-3" style="text-align:center">
+            <a [routerLink]="'/'">
+                <img class="img-fluid mx-auto d-block" src="{{ ( 'pearup-logo' | appPicture) }}" border="0" alt="PearUp" title="PearUp">
+            </a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="auth-block col-12 col-md-4 mx-auto col-lg-5 col-xl-3">
+            <form [formGroup]="loginform" class="form-horizontal">
+                <div class="input-group mb-3 row" [ngClass]="{'has-error': (!email.valid && email.touched), 'has-success': (email.valid && email.touched)}">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-user fa-lg" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <input [formControl]="email" type="email" class="form-control" id="inputEmail" placeholder="Email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$">
+                </div>
+                <div class="form-group row" *ngIf="email.touched && (!email.valid && email.hasError('required'))">
+                    <span class="help-block text-danger" id="errorEmailRequired">Email is required</span>
+                </div>
+                <div class="form-group row" *ngIf="email.touched && (!email.valid && email.hasError('pattern'))">
+                    <span class="help-block text-danger" id="errorValidEmail">Please enter valid email</span>
+                </div>
+                <div class="input-group mb-3 row" [ngClass]="{'has-error': (!password.valid && password.touched), 'has-success': (password.valid && password.touched)}">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-lock fa-lg" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <input [formControl]="password" type="password" class="form-control" id="inputPassword" placeholder="Password" maxlength="15">
+                </div>
+                <div class="form-group row" *ngIf="password.touched &&(!password.valid && password.hasError('required'))">
+                    <span id="errorPassword" class="help-block text-danger">Password is required</span>
+                </div>
+                <div class="form-group row" *ngIf="password.touched && !password.valid && (password.hasError('maxlength') || password.hasError('minlength'))">
+                    <span id="errorPassword" class="help-block text-danger">Password must be of min 8 and max 15 characters</span>
+                </div>
+                <div class="row">
+                    <p-messages [(value)]="displayMessages" class="col-12 login-error">
+                    </p-messages>
+                </div>
+                <div class="row">
+                    <div class="offset-2 col-10">
+                        <div class="pull-left">
+                            <button *ngIf="!loading" [disabled]="!loginform.valid" type="button" (click)="onSubmit(loginform.value)" class="btn btn-primary">  Sign-in
+                                <i class="fa fa-sign-in"></i>
+                            </button>
+                            <i *ngIf="loading" class="fa fa-spinner fa-pulse fa-2x fa-fw"></i>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
