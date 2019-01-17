@@ -205,7 +205,7 @@ def SendMail(ProjectName, EmailRecipients, BuildStatus, FailedStage, checkOutInf
         """
     }
     emailBody = emailBody + """</table>"""
-    def emailSubject = "iPORT-HD - ${ProjectName} Build Status"
+    def emailSubject = "GGK - ${ProjectName} Build Status"
 
     //sending email
     emailext body: emailBody,
