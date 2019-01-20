@@ -51,7 +51,7 @@ node('BuildNode')
     // Publish Docker image to Amazon ECR
     sh '''
       #ECR login
-      $(aws ecr get-login --no-include-email --region eu-central-1)
+      $(aws ecr get-login --region eu-central-1 | sed 's/ -e none//g')
       
       #Tag docker image as pearupweb latest, also with version number for rollbacks
       docker tag pearupweb:latest 231938700547.dkr.ecr.eu-central-1.amazonaws.com/pearupweb:latest
