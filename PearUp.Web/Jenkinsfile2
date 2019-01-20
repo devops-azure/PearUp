@@ -71,45 +71,6 @@ node('BuildNode')
       throw error
     }        
   }
-  
-  stage('Deploy: ECS') {
-    try{
-      // Deploy to Staging Environment in Amazon ECS
-        sh "aws ecs update-service --service pearupweb --region eu-central-1 --cluster PearUp --desired-count 0"
-        timeout(time: 5, unit: 'MINUTES') {
-            waitUntil {
-                sh "aws ecs describe-services --service pearupweb --region eu-central-1  --cluster PearUp   > .amazon-ecs-service-status.json"
-
-                // parse `describe-services` output
-                def ecsServicesStatusAsJson = readFile(".amazon-ecs-service-status.json")
-                def ecsServicesStatus = new groovy.json.JsonSlurper().parseText(ecsServicesStatusAsJson)
-                println "$ecsServicesStatus"
-                def ecsServiceStatus = ecsServicesStatus.services[0]
-                return ecsServiceStatus.get('runningCount') == 0 && ecsServiceStatus.get('status') == "ACTIVE"
-            }
-        }
-        sh "aws ecs update-service --service pearupweb --region eu-central-1 --cluster PearUp --desired-count 1"
-        timeout(time: 5, unit: 'MINUTES') {
-            waitUntil {
-                sh "aws ecs describe-services --service pearupweb  --region eu-central-1 --cluster PearUp  > .amazon-ecs-service-status.json"
-
-                // parse `describe-services` output
-                def ecsServicesStatusAsJson = readFile(".amazon-ecs-service-status.json")
-                def ecsServicesStatus = new groovy.json.JsonSlurper().parseText(ecsServicesStatusAsJson)
-                println "$ecsServicesStatus"
-                def ecsServiceStatus = ecsServicesStatus.services[0]
-                return ecsServiceStatus.get('runningCount') == 1 && ecsServiceStatus.get('status') == "ACTIVE"
-            }
-        }
-      
-        echo "ggk#${env.BUILD_NUMBER} SUCCESSFULLY deployed to Staging at http://54.93.246.48:8080"
-    
-     }
-     catch(error){
-      SendMail(ProjectName, EmailRecipients, "FAILED", "Publish to ECR", checkOutInformation)
-      throw error
-     }
-   }
 }
 
 
