@@ -74,7 +74,10 @@ node('BuildNode')
   stage('Deploy: ECS') {
     try{
       // Deploy to Staging Environment in Amazon ECS
-        sh "aws ecs update-service --service pearupweb --region eu-central-1 --cluster PearUp --desired-count 0"
+      // Make desired count 0 to stop the service for a secound.
+        sh "aws ecs update-service --service pearupweb --region eu-central-1 --cluster PearUp --desired-count 0"4
+        
+      // wait for max 5 mins, so that update should return the running count to 0
         timeout(time: 5, unit: 'MINUTES') {
             waitUntil {
                 sh "aws ecs describe-services --service pearupweb --region eu-central-1  --cluster PearUp   > .amazon-ecs-service-status.json"
@@ -87,7 +90,11 @@ node('BuildNode')
                 return ecsServiceStatus.get('runningCount') == 0 && ecsServiceStatus.get('status') == "ACTIVE"
             }
         }
+       
+       // bring back the service desired count (so that service will update with new image from the ECR)
         sh "aws ecs update-service --service pearupweb --region eu-central-1 --cluster PearUp --desired-count 1"
+        
+       // wait for max 5 mins, so that update should return the running count to 1
         timeout(time: 5, unit: 'MINUTES') {
             waitUntil {
                 sh "aws ecs describe-services --service pearupweb  --region eu-central-1 --cluster PearUp  > .amazon-ecs-service-status.json"
@@ -110,8 +117,6 @@ node('BuildNode')
      }
    }
 }
-
-
 
 def SendMail(ProjectName, EmailRecipients, BuildStatus, FailedStage, checkOutInformation){
 
