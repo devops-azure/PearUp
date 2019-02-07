@@ -1,7 +1,12 @@
 def ProjectName = "PearUp"
 def EmailRecipients = "siva.kondabathini@ggktech.com"
 def checkOutInformation
-
+parameters {
+  choice(
+    name: 'Nodes',
+    choices:"Linux\nMac",
+    description: "Choose Node!")
+}
 node('BuildNode')
 {
   stage('GitHub Pull') { 
