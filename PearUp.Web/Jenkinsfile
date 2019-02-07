@@ -1,14 +1,15 @@
 def ProjectName = "PearUp"
 def EmailRecipients = "siva.kondabathini@ggktech.com"
 def checkOutInformation
+
+node('BuildNode')
+{
 parameters {
   choice(
     name: 'Nodes',
     choices:"Linux\nMac",
     description: "Choose Node!")
 }
-node('BuildNode')
-{
   stage('GitHub Pull') { 
     try{
       // Get some code from GitHub repository
