@@ -11,7 +11,7 @@ properties([
 node('BuildNode')
 {
   stage('GitHub Pull') { 
-      sh "echo ${params.Nodes}"
+      sh "echo ${params.DEPLOY_ENV}"
       // Get some code from GitHub repository
       checkOutInformation = git credentialsId: '444d8b75-cf7c-4c8d-a8dc-bbcc321fed03', url: 'https://github.com/sivasankarkondabathini/PearUp.git'
   }
