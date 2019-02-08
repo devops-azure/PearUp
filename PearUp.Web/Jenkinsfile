@@ -2,14 +2,14 @@ def ProjectName = "PearUp"
 def EmailRecipients = "siva.kondabathini@ggktech.com"
 def checkOutInformation
 
+properties([
+  parameters([
+    string(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'The target environment', )
+   ])
+])
+
 node('BuildNode')
 {
-  parameters {
-    choice(
-      name: 'Nodes',
-      choices:"Linux\nMac",
-      description: "Choose Node!")
-  }
   stage('GitHub Pull') { 
       sh "echo ${params.Nodes}"
       // Get some code from GitHub repository
