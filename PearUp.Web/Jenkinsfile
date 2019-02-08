@@ -5,6 +5,7 @@ def checkOutInformation
 properties([
   parameters([
     string(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'The target environment', )
+    choice(choices: ['US-EAST-1', 'US-WEST-2'], description: 'What AWS region?', name: 'region')
    ])
 ])
 
