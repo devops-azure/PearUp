@@ -105,7 +105,7 @@ node('BuildNode') {
       checkOutInformation = git credentialsId: '444d8b75-cf7c-4c8d-a8dc-bbcc321fed03', url: 'https://github.com/sivasankarkondabathini/PearUp.git'
       sh '''
         cd PearUp_Selenium_Tests
-        mvn clean install exec:java -Dexec.classpathScope=compile -Dexec.cleanupDaemonThreads=false
+        #mvn clean install exec:java -Dexec.classpathScope=compile -Dexec.cleanupDaemonThreads=false
       '''
    }
    catch(error){
