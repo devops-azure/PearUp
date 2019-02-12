@@ -33,7 +33,7 @@ node('BuildNode')
     try{
       // Check SonarQube project status
       sh '''#!/bin/bash
-      if [ "$(jq \' .projectStatus | .status \' <<< "$(curl http://ip-10-0-0-183.eu-central-1.compute.internal:8000/api/qualitygates/project_status?projectKey=PearUpWeb)")" = "\\"OK\\"" ]; then
+      if [ "$(jq \' .projectStatus | .status \' <<< "$(curl http://ip-10-0-0-222.eu-central-1.compute.internal:9000/api/qualitygates/project_status?projectKey=PearUpWeb)")" = "\\"OK\\"" ]; then
              echo "SONAR ANALYSIS IS PASSED"
       else
          echo "SONAR ANALYSIS IS FAILED"
@@ -51,16 +51,16 @@ node('BuildNode')
       // Publish Docker images to Nexus Docker Registry
       sh '''
         #Tag docker image as pearupweb latest, also with version number for rollbacks
-        docker tag pearupweb ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
-        docker tag pearupweb ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
+        docker tag pearupweb ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+        docker tag pearupweb ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
 
         #Publish docker image to nexus docker registry
-        docker push ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
-        docker push ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
+        docker push ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+        docker push ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
 
         #Delete published docker images from local
-        docker rmi ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
-        docker rmi ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
+        docker rmi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+        docker rmi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
         '''
     }
     catch(error){
@@ -76,7 +76,7 @@ node('StagingNode') {
        sh '''#!/bin/bash
         #Pull pearupweb docker image from nexus docker registry
 
-        docker pull ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
+        docker pull ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
 
         #Check if pearupweb service is already present
         docker service ps pearupweb 2>/dev/null || status=$? && true
@@ -84,12 +84,12 @@ node('StagingNode') {
         if [[ ($status -eq 0) ]]; then
          #Update pearupweb latest service
          echo "Peaupweb service is already present, updating it!!"
-         docker service update --force pearupweb --image ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
+         docker service update --force pearupweb --image ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
 
         else
          #Create pearupweb service
          echo "creating pearupweb service"
-         docker service create --name pearupweb --publish 8080:4201 ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
+         docker service create --name pearupweb --publish 8080:4201 ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
         fi'''
      }
     catch(error){
@@ -128,7 +128,7 @@ node('ProdNode') {
          sh '''#!/bin/bash
           #Pull pearupweb docker image from nexus docker registry
 
-          docker pull  ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+          docker pull ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
 
           #Check if pearupweb service is already present
           docker service ps pearupweb 2>/dev/null || status=$? && true
