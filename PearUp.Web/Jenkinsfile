@@ -2,19 +2,212 @@ def ProjectName = "PearUp"
 def EmailRecipients = "siva.kondabathini@ggktech.com"
 def checkOutInformation
 
-properties([
-  parameters([
-    string(name: 'DEPLOY_ENV', defaultValue: 'TESTING', description: 'The target environment', ),
-    choice(choices: ['US-EAST-1', 'US-WEST-2'], description: 'What AWS region?', name: 'region')
-   ])
-])
-
 node('BuildNode')
 {
-  stage('GitHub Pull') { 
-      sh "echo ${params.DEPLOY_ENV}"
+  stage('GitHub Pull') {
+    try{
       // Get some code from GitHub repository
       checkOutInformation = git credentialsId: '444d8b75-cf7c-4c8d-a8dc-bbcc321fed03', url: 'https://github.com/sivasankarkondabathini/PearUp.git'
+    }
+    catch(error){
+        SendMail(ProjectName, EmailRecipients, "FAILED", "GitHub Pull", checkOutInformation)
+        throw error
+    }
+   }
+
+   stage('Docker Build') {
+    try{
+      // Build app using Docker image
+      sh '''
+        cd PearUp.Web
+        docker build -t pearupweb .
+        '''
+    }
+    catch(error){
+        SendMail(ProjectName, EmailRecipients, "FAILED", "Docker Build", checkOutInformation)
+        throw error
+    }
+   }
+
+   stage('Code Analysis: SonarQube') {
+    try{
+      // Check SonarQube project status
+      sh '''#!/bin/bash
+      if [ "$(jq \' .projectStatus | .status \' <<< "$(curl http://ip-10-0-0-183.eu-central-1.compute.internal:8000/api/qualitygates/project_status?projectKey=PearUpWeb)")" = "\\"OK\\"" ]; then
+             echo "SONAR ANALYSIS IS PASSED"
+      else
+         echo "SONAR ANALYSIS IS FAILED"
+         exit 1
+      fi;'''
+    }
+    catch(error){
+        SendMail(ProjectName, EmailRecipients, "FAILED", "SonarQube Analysis", checkOutInformation)
+        throw error
+    }
+   }
+
+   stage('Publish: Nexus Artifactory') {
+    try{
+      // Publish Docker images to Nexus Docker Registry
+      sh '''
+        #Tag docker image as pearupweb latest, also with version number for rollbacks
+        docker tag pearupweb ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
+        docker tag pearupweb ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
+
+        #Publish docker image to nexus docker registry
+        docker push ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
+        docker push ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
+
+        #Delete published docker images from local
+        docker rmi ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
+        docker rmi ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
+        '''
+    }
+    catch(error){
+        SendMail(ProjectName, EmailRecipients, "FAILED", "Publish to Nexus Artifactory", checkOutInformation)
+        throw error
+    }
+   }
+}
+node('StagingNode') {
+   stage('Deploy: Staging Environment'){
+    try{
+       echo "Deploy to staging environment!!"
+       sh '''#!/bin/bash
+        #Pull pearupweb docker image from nexus docker registry
+
+        docker pull ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
+
+        #Check if pearupweb service is already present
+        docker service ps pearupweb 2>/dev/null || status=$? && true
+
+        if [[ ($status -eq 0) ]]; then
+         #Update pearupweb latest service
+         echo "Peaupweb service is already present, updating it!!"
+         docker service update --force pearupweb --image ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
+
+        else
+         #Create pearupweb service
+         echo "creating pearupweb service"
+         docker service create --name pearupweb --publish 8080:4201 ip-10-0-0-183.eu-central-1.compute.internal:5000/pearupweb:latest
+        fi'''
+     }
+    catch(error){
+        SendMail(ProjectName, EmailRecipients, "FAILED", "Staging Deployment", checkOutInformation)
+        throw error
+    }
   }
 }
- 
+node('BuildNode') {
+  stage('Test: Functional & Performance'){
+   try{
+      // Download Selenium functional tests
+      git url: 'https://github.com/sivasankarkondabathini/PearUp.git'
+      sh '''
+        cd PearUp_Selenium_Tests
+        mvn clean install exec:java -Dexec.classpathScope=compile -Dexec.cleanupDaemonThreads=false
+      '''
+   }
+   catch(error){
+        SendMail(ProjectName, EmailRecipients, "FAILED", "Functional Test", checkOutInformation)
+        throw error
+   }
+  }
+}
+
+stage('Manual Approval: Prod Deploy'){
+ timeout(time: 5, unit: 'MINUTES') {
+    input "Deploy to prod?"
+ }
+}
+node('ProdNode') {
+    stage('Deploy: Prod Environment'){
+       try
+       {
+         echo "Deploy to Prod environment!!"
+         sh '''#!/bin/bash
+          #Pull pearupweb docker image from nexus docker registry
+
+          docker pull  ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+
+          #Check if pearupweb service is already present
+          docker service ps pearupweb 2>/dev/null || status=$? && true
+
+          if [[ ($status -eq 0) ]]; then
+           #Update pearupweb latest service
+           echo "Peaupweb service is already present, updating it!!"
+           docker service update --force pearupweb --image ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+          else
+           #Create pearupweb service
+           echo "creating pearupweb service"
+           docker service create --name pearupweb --publish 8080:4201 ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+          fi'''
+
+          SendMail(ProjectName, EmailRecipients, "SUCCESS", "PearUp Pipeline", checkOutInformation)
+        }
+        catch(err)
+        {
+                SendMail(ProjectName, EmailRecipients, "FAILED", "Prod Deployment", checkOutInformation)
+                throw err
+                }
+          }
+}
+def SendMail(ProjectName, EmailRecipients, BuildStatus, FailedStage, checkOutInformation){
+
+    //Configuring status color
+    def statusColor = "red"
+    if("${BuildStatus}" == "SUCCESS"){
+        statusColor = "green"
+    }
+
+    //Configuring Email Body
+    def emailBody = """<table style='border: 1px solid black;border-collapse: collapse;'>
+        <tr>
+            <td colspan='2' style='background-color:${statusColor}; color:white; text-align:middle;font-size: 20px;white-space: nowrap;padding: 5px;'>
+            ${ProjectName} - Build #${BUILD_NUMBER} - ${BuildStatus}</td>
+        </tr>
+        <tr>
+            <td style='font-weight:bold; white-space: nowrap; padding: 5px;'>Jenkins Job Name</td>
+            <td>: ${JOB_NAME}</td>
+        </tr>
+        <tr style='background-color: #f2f2f2'>
+            <td style='font-weight:bold; white-space: nowrap; padding: 5px;'>Build Status </td>
+            <td>: ${BuildStatus}</td>
+        </tr>
+        <tr>
+            <td style='font-weight:bold; white-space: nowrap; padding: 5px;'>Console Output</td>
+            <td>: <a href="${BUILD_URL}/console">Click here</a></td>
+        </tr>
+        <tr>
+            <td style='font-weight:bold; white-space: nowrap; padding: 5px;'>GIT Branch</td>
+            <td>: ${checkOutInformation.GIT_BRANCH}</td>
+        </tr>
+        <tr style='background-color: #f2f2f2'>
+            <td style='font-weight:bold; white-space: nowrap; padding: 5px;'>GIT Commit SHA</td>
+            <td>: ${checkOutInformation.GIT_COMMIT}</td>
+        </tr>
+        <tr>
+            <td style='font-weight:bold; white-space: nowrap; padding: 5px;'>GIT URL</td>
+            <td>: <a href='${checkOutInformation.GIT_URL}'>Click here</a></td>
+        </tr>"""
+
+    //Adding failed stage to email body
+    if("${BuildStatus}" == "FAILED"){
+        emailBody = emailBody + """
+        <tr style='background-color: #f2f2f2'>
+            <td style='font-weight:bold; white-space: nowrap; padding: 5px;'>Failed Stage</td>
+            <td>: ${FailedStage}</td>
+        </tr>
+        """
+    }
+    emailBody = emailBody + """</table>"""
+    def emailSubject = "GGK - ${ProjectName} Build Status"
+
+    //sending email
+    emailext body: emailBody,
+    attachLog: true,
+    subject: emailSubject,
+    mimeType: 'text/html',
+    to: EmailRecipients
+}
+
