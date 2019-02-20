@@ -1,0 +1,30 @@
+apiVersion: apps/v1 # for versions before 1.9.0 use apps/v1beta2
+kind: Deployment
+metadata:
+  name: pearupweb
+  namespace: pearup-kubernetes
+spec:
+  selector:
+    matchLabels:
+      app: pearupweb
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: pearupweb
+    spec:
+      containers:
+      - name: pearupweb
+        image: 10.0.0.48:5000/pearupweb:latest
+        ports:
+        - containerPort: 4201
+#        volumeMounts:
+#        - name: pearupweb-volume
+#          mountPath: /PearUp.Web
+      imagePullSecrets:
+      - name: regcred
+#      volumes:
+#      - name: pearupweb-volume
+#        hostPath:
+#          path: /home/ubuntu/PearUp.Web
+#      type: Directory

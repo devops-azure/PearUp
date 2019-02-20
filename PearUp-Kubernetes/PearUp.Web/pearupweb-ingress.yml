@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pearupweb
+  namespace: pearup
+spec:
+  rules:
+  - host: pearupweb.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: pearupweb
+          servicePort: 4201
