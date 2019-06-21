@@ -2,101 +2,89 @@ def ProjectName = "PearUp"
 def EmailRecipients = "siva.kondabathini@ggktech.com"
 def checkOutInformation
 
-node('BuildNode')
-{
-  stage('GitHub Pull') {
-    try{
-      // Get some code from GitHub repository
-      checkOutInformation = git credentialsId: '444d8b75-cf7c-4c8d-a8dc-bbcc321fed03', url: 'https://github.com/sivasankarkondabathini/PearUp.git'
-    }
-    catch(error){
-        SendMail(ProjectName, EmailRecipients, "FAILED", "GitHub Pull", checkOutInformation)
-        throw error
-    }
-   }
+pipeline {
+  agent { label "master" }
+    stages {
+      stage('GitHub Pull') {
+        steps {
+          script {
+            // Get some code from GitHub repository
+            checkOutInformation = git credentialsId: '444d8b75-cf7c-4c8d-a8dc-bbcc321fed03', url: 'https://github.com/sivasankarkondabathini/PearUp.git'
+          }
+        }
+      }
+      stage('Docker Build') {
+        steps {
+          script {
+            // Build app using Docker image
+            sh '''
+              cd PearUp.Web
+              docker build -t pearupweb .
+            '''
+          }
+        }
+      }
+      stage('Code Analysis: SonarQube') {
+        steps {
+          script {
+            // Check SonarQube project status
+            sh '''#!/bin/bash
+              #if [ "$(jq \' .projectStatus | .status \' <<< "$(curl http://ip-10-0-0-222.eu-central-1.compute.internal:9000/api/qualitygates/project_status?projectKey=PearUpWeb)")" = "\\"OK\\"" ]; then
+                echo "SONAR ANALYSIS IS PASSED"
+              #else
+                #echo "SONAR ANALYSIS IS FAILED"
+                #exit 1
+              #fi;
+            '''
+          }
+        }
+      }
+      stage('Publish: Nexus Artifactory') {
+        steps {
+          script {        
+            // Publish Docker images to Nexus Docker Registry
+            sh '''
+              #Tag docker image as pearupweb latest, also with version number for rollbacks
+              docker tag pearupweb ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+              docker tag pearupweb ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
 
-   stage('Docker Build') {
-    try{
-      // Build app using Docker image
-      sh '''
-        cd PearUp.Web
-        docker build -t pearupweb .
-        '''
-    }
-    catch(error){
-        SendMail(ProjectName, EmailRecipients, "FAILED", "Docker Build", checkOutInformation)
-        throw error
-    }
-   }
+              #Publish docker image to nexus docker registry
+              docker push ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+              docker push ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
 
-   stage('Code Analysis: SonarQube') {
-    try{
-      // Check SonarQube project status
-      sh '''#!/bin/bash
-      #if [ "$(jq \' .projectStatus | .status \' <<< "$(curl http://ip-10-0-0-222.eu-central-1.compute.internal:9000/api/qualitygates/project_status?projectKey=PearUpWeb)")" = "\\"OK\\"" ]; then
-             echo "SONAR ANALYSIS IS PASSED"
-      #else
-      #   echo "SONAR ANALYSIS IS FAILED"
-      #   exit 1
-      #fi;
-      '''
-    }
-    catch(error){
-        SendMail(ProjectName, EmailRecipients, "FAILED", "SonarQube Analysis", checkOutInformation)
-        throw error
-    }
-   }
+              #Delete published docker images from local
+              docker rmi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+              docker rmi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
+            '''
+          }
+        }
+      }
+      stage('Deploy: Staging Environment'){
+        
+        agent { label 'StagingNode' }
+        steps {
+          script {             
+          echo "Deploy to staging environment!!"
+          sh '''#!/bin/bash
+            #Pull pearupweb docker image from nexus docker registry
 
-   stage('Publish: Nexus Artifactory') {
-    try{
-      // Publish Docker images to Nexus Docker Registry
-      sh '''
-        #Tag docker image as pearupweb latest, also with version number for rollbacks
-        docker tag pearupweb ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
-        docker tag pearupweb ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
+            docker pull ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
 
-        #Publish docker image to nexus docker registry
-        docker push ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
-        docker push ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
+            #Check if pearupweb service is already present
+            docker service ps pearupweb 2>/dev/null || status=$? && true
 
-        #Delete published docker images from local
-        docker rmi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
-        docker rmi ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:${BUILD_NUMBER}
-        '''
-    }
-    catch(error){
-        SendMail(ProjectName, EmailRecipients, "FAILED", "Publish to Nexus Artifactory", checkOutInformation)
-        throw error
-    }
-   }
-}
-node('StagingNode') {
-   stage('Deploy: Staging Environment'){
-    try{
-       echo "Deploy to staging environment!!"
-       sh '''#!/bin/bash
-        #Pull pearupweb docker image from nexus docker registry
+            if [[ ($status -eq 0) ]]; then
+             #Update pearupweb latest service
+             echo "Peaupweb service is already present, updating it!!"
+             docker service update --force pearupweb --image ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
 
-        docker pull ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
-
-        #Check if pearupweb service is already present
-        docker service ps pearupweb 2>/dev/null || status=$? && true
-
-        if [[ ($status -eq 0) ]]; then
-         #Update pearupweb latest service
-         echo "Peaupweb service is already present, updating it!!"
-         docker service update --force pearupweb --image ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
-
-        else
-         #Create pearupweb service
-         echo "creating pearupweb service"
-         docker service create --name pearupweb --publish 8080:4201 ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
-        fi'''
-     }
-    catch(error){
-        SendMail(ProjectName, EmailRecipients, "FAILED", "Staging Deployment", checkOutInformation)
-        throw error
-    }
+            else
+             #Create pearupweb service
+             echo "creating pearupweb service"
+             docker service create --name pearupweb --publish 8080:4201 ip-10-0-0-48.eu-central-1.compute.internal:5000/pearupweb:latest
+            fi'''
+       }
+      }
   }
 }
 node('BuildNode') {
