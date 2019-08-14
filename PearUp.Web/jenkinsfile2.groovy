@@ -92,7 +92,7 @@ node('BuildNode')
     try{
       // Publish Docker images to Nexus Docker Registry
       sh '''
-        echo "Staging
+        echo "Staging"
         '''
     }
     catch(error){
@@ -104,7 +104,7 @@ node('BuildNode')
     try{
       // Publish Docker images to Nexus Docker Registry
       sh '''
-        echo "Prod
+        echo "Prod"
         '''
     }
     catch(error){
