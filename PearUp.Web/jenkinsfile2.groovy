@@ -1,6 +1,7 @@
 def ProjectName = "PearUp"
 def EmailRecipients = "siva.kondabathini@ggktech.com"
 def checkOutInformation
+def branch = "develop"
 
 node('BuildNode')
 {
@@ -89,6 +90,7 @@ node('BuildNode')
     }
    }
    stage('Deploy to Staging') {
+     when {branch staging}
     try{
       // Publish Docker images to Nexus Docker Registry
       sh '''
@@ -101,6 +103,7 @@ node('BuildNode')
     }
    } 
    stage('Deploy to Production') {
+     when {branch master}     
     try{
       // Publish Docker images to Nexus Docker Registry
       sh '''
