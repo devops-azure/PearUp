@@ -90,7 +90,6 @@ node('BuildNode')
     }
    }
    stage('Deploy to Staging') {
-     when {branch staging}
     try{
       // Publish Docker images to Nexus Docker Registry
       sh '''
@@ -102,8 +101,19 @@ node('BuildNode')
         throw error
     }
    } 
+   stage('Approval: Promote to Production') {
+    try{
+      // Publish Docker images to Nexus Docker Registry
+      sh '''
+        echo "Prod"
+        '''
+    }
+    catch(error){
+        SendMail(ProjectName, EmailRecipients, "FAILED", "Publish to Nexus Artifactory", checkOutInformation)
+        throw error
+    }
+   }    
    stage('Deploy to Production') {
-     when {branch master}     
     try{
       // Publish Docker images to Nexus Docker Registry
       sh '''
