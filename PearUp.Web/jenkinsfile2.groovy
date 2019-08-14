@@ -90,6 +90,7 @@ node('BuildNode')
     }
    }
    stage('Deploy to Staging') {
+     when {branch master}         
     try{
       // Publish Docker images to Nexus Docker Registry
       sh '''
